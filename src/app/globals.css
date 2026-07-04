@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand palette */
+  --color-gold: #F5A623;
+  --color-gold-light: #FFD57E;
+  --color-gold-dark: #C47D0E;
+  --color-brand-black: #0A0A0A;
+  --color-brand-dark: #111111;
+
+  /* Corporate palette */
+  --color-navy: #1E3A5F;
+  --color-navy-dark: #0F2240;
+  --color-navy-light: #2E5490;
+  --color-sky: #2563EB;
+
+  /* Modern palette */
+  --color-slate-950: #020617;
+  --color-orange: #F97316;
+  --color-teal: #0D9488;
+
+  /* Shared neutrals */
+  --color-zinc-50: #FAFAFA;
+  --color-zinc-100: #F4F4F5;
+  --color-zinc-200: #E4E4E7;
+  --color-zinc-400: #A1A1AA;
+  --color-zinc-600: #52525B;
+  --color-zinc-900: #18181B;
+
+  /* Fonts */
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-barlow);
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up var(--duration, 0.6s) var(--delay, 0s) both ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in var(--duration, 0.6s) var(--delay, 0s) both ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-up,
+  .animate-fade-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
