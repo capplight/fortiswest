@@ -4,9 +4,9 @@ export const company = {
   tagline: "Trusted Equipment & Services for the Oil & Gas Industry",
   description:
     "Fortis West LLP is one of the leading oil field equipment trading and service companies actively involved in major projects across the Kazakhstan region. We supply heavy equipment, mechanical items, electrical products, and safety gear from the USA, Europe, and Asia.",
-  address: "Kazakhstan, Atyrau, Abay St., Building 2A, Office 212, 060002",
+  address: "Kazakhstan, E02M9F2, Atyrau, Aiteke bi St. 43A, 5th Floor, Office 509",
   email: "info@fortiswest.kz",
-  phone: "+7 (7122) 32 10 14",
+  phone: "+7 701 241 4956",
   socialLinks: {
     linkedin: "#",
     facebook: "#",
@@ -221,6 +221,19 @@ export type Product = {
   subcategory?: string;
   manufacturer?: string;
   origin?: string;
+  /** Manufacturer datasheets / brochures available for this product. */
+  docs?: ProductDoc[];
+};
+
+/** A downloadable manufacturer datasheet attached to a product. */
+export type ProductDoc = {
+  /** Human label, e.g. "Wafer Type Check Valve" or "Technical Datasheet". */
+  label: string;
+  /** Path to the compressed PDF, e.g. /pdfs/check-wafer.pdf */
+  pdf: string;
+  /** Path to the page-1 preview image, e.g. /pdf-thumbs/check-wafer.jpg */
+  thumb: string;
+  pages: number;
 };
 
 export type ProductCategory = {
@@ -241,7 +254,10 @@ export const productCategories: ProductCategory[] = [
     products: [
       {
         id: "trunnion-mounted-ball",
-        image: "/products/ball-valve-2pc.jpg",
+        docs: [
+          { label: "Trunnion Mounted Ball Valve", pdf: "/pdfs/trunnion-mounted-ball.pdf", thumb: "/pdf-thumbs/trunnion-mounted-ball.jpg", pages: 19 },
+        ],
+        image: "/products/trunnion-mounted-ball.jpg",
         name: "Trunnion Mounted Ball Valve",
         category: "valves",
         subcategory: "Ball Valves",
@@ -250,6 +266,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "ball-valve-3pc",
+        docs: [
+          { label: "Three-Piece Ball Valve", pdf: "/pdfs/ball-valve-3pc.pdf", thumb: "/pdf-thumbs/ball-valve-3pc.jpg", pages: 3 },
+        ],
         image: "/products/ball-valve-3pc.jpg",
         name: "Three-Piece Ball Valve",
         category: "valves",
@@ -259,6 +278,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "floating-ball-valve",
+        docs: [
+          { label: "Floating Ball Valve (API 6D)", pdf: "/pdfs/floating-ball-valve.pdf", thumb: "/pdf-thumbs/floating-ball-valve.jpg", pages: 5 },
+        ],
         image: "/products/floating-ball-valve.jpg",
         name: "Floating Ball Valve",
         category: "valves",
@@ -268,6 +290,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "welded-structure-ball",
+        docs: [
+          { label: "Welded Structure Ball Valve (API 6D)", pdf: "/pdfs/welded-structure-ball.pdf", thumb: "/pdf-thumbs/welded-structure-ball.jpg", pages: 7 },
+        ],
         image: "/products/welded-structure-ball.jpg",
         name: "Welded Structure Ball Valve (API 6D)",
         category: "valves",
@@ -277,6 +302,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "double-block-bleed",
+        docs: [
+          { label: "Double Block & Bleed Valve", pdf: "/pdfs/double-block-bleed.pdf", thumb: "/pdf-thumbs/double-block-bleed.jpg", pages: 9 },
+        ],
         image: "/products/double-block-bleed.jpg",
         name: "Double Block & Bleed Valve",
         category: "valves",
@@ -286,6 +314,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "rising-stem-ball",
+        docs: [
+          { label: "Rising Stem Ball Valve", pdf: "/pdfs/rising-stem-ball.pdf", thumb: "/pdf-thumbs/rising-stem-ball.jpg", pages: 1 },
+        ],
         image: "/products/rising-stem-ball.jpg",
         name: "Rising Stem Ball Valve",
         category: "valves",
@@ -295,6 +326,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "cryogenic-ball-valve",
+        docs: [
+          { label: "Cryogenic Ball Valve", pdf: "/pdfs/cryogenic-ball-valve.pdf", thumb: "/pdf-thumbs/cryogenic-ball-valve.jpg", pages: 42 },
+        ],
         image: "/products/cryogenic-ball-valve.jpg",
         name: "Cryogenic Ball Valve",
         category: "valves",
@@ -304,6 +338,10 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "lined-ball-valve",
+        docs: [
+          { label: "Lined Valves Catalogue", pdf: "/pdfs/lined-ball-valve.pdf", thumb: "/pdf-thumbs/lined-ball-valve.jpg", pages: 1 },
+        ],
+        image: "/products/lined-ball-valve.jpg",
         name: "Lined Ball Valve",
         category: "valves",
         subcategory: "Ball Valves",
@@ -312,7 +350,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "multi-way-ball-valve",
-        image: "/products/multi-way-ball-valve.jpg",
+        docs: [
+          { label: "Multi-Way (3 & 4 Way) Ball Valve", pdf: "/pdfs/multi-way-ball-valve.pdf", thumb: "/pdf-thumbs/multi-way-ball-valve.jpg", pages: 5 },
+        ],
         name: "Multi-Way Ball Valve",
         category: "valves",
         subcategory: "Ball Valves",
@@ -321,6 +361,11 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "segment-ball-valve",
+        docs: [
+          { label: "Segmented Ball Valve", pdf: "/pdfs/segment-ball-valve.pdf", thumb: "/pdf-thumbs/segment-ball-valve.jpg", pages: 8 },
+          { label: "Segment Ball Valve — Data Sheet", pdf: "/pdfs/segment-ball-valve-2.pdf", thumb: "/pdf-thumbs/segment-ball-valve-2.jpg", pages: 1 },
+        ],
+        image: "/products/segment-ball-valve.jpg",
         name: "Segment Ball Valve",
         category: "valves",
         subcategory: "Ball Valves",
@@ -329,6 +374,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "top-entry-ball-valve",
+        docs: [
+          { label: "Top Entry Ball Valve (API 6D)", pdf: "/pdfs/top-entry-ball-valve.pdf", thumb: "/pdf-thumbs/top-entry-ball-valve.jpg", pages: 8 },
+        ],
         name: "Top Entry Ball Valve",
         category: "valves",
         subcategory: "Ball Valves",
@@ -337,6 +385,10 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "v-notch-ball-valve",
+        docs: [
+          { label: "V-Notch Ball Valve", pdf: "/pdfs/v-notch-ball-valve.pdf", thumb: "/pdf-thumbs/v-notch-ball-valve.jpg", pages: 1 },
+        ],
+        image: "/products/v-notch-ball-valve.jpg",
         name: "V-Notch Ball Valve",
         category: "valves",
         subcategory: "Ball Valves",
@@ -345,6 +397,14 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "butterfly-valve",
+        docs: [
+          { label: "Flanged Type Butterfly Valve", pdf: "/pdfs/butterfly-flanged.pdf", thumb: "/pdf-thumbs/butterfly-flanged.jpg", pages: 2 },
+          { label: "High Performance — Triple Eccentric", pdf: "/pdfs/butterfly-triple-eccentric.pdf", thumb: "/pdf-thumbs/butterfly-triple-eccentric.jpg", pages: 20 },
+          { label: "High Performance — Rubber Lined", pdf: "/pdfs/butterfly-rubber-lined.pdf", thumb: "/pdf-thumbs/butterfly-rubber-lined.jpg", pages: 24 },
+          { label: "PTFE Lined Butterfly Valve", pdf: "/pdfs/butterfly-ptfe-lined.pdf", thumb: "/pdf-thumbs/butterfly-ptfe-lined.jpg", pages: 21 },
+          { label: "PVC Butterfly Valve (Schedule 80)", pdf: "/pdfs/butterfly-pvc.pdf", thumb: "/pdf-thumbs/butterfly-pvc.jpg", pages: 4 },
+          { label: "Rubber Seat Butterfly Valve", pdf: "/pdfs/butterfly-rubber-seat.pdf", thumb: "/pdf-thumbs/butterfly-rubber-seat.jpg", pages: 10 },
+        ],
         image: "/products/butterfly-valve.jpg",
         name: "Butterfly Valve",
         category: "valves",
@@ -354,6 +414,13 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "check-valve",
+        docs: [
+          { label: "Flanged Type Check Valve", pdf: "/pdfs/check-flanged.pdf", thumb: "/pdf-thumbs/check-flanged.jpg", pages: 9 },
+          { label: "Wafer Type Check Valve", pdf: "/pdfs/check-wafer.pdf", thumb: "/pdf-thumbs/check-wafer.jpg", pages: 22 },
+          { label: "Lug Type Check Valve", pdf: "/pdfs/check-lug.pdf", thumb: "/pdf-thumbs/check-lug.jpg", pages: 4 },
+          { label: "Swing Check Valve", pdf: "/pdfs/check-swing.pdf", thumb: "/pdf-thumbs/check-swing.jpg", pages: 5 },
+          { label: "Forged Steel Check Valve", pdf: "/pdfs/check-forged-steel.pdf", thumb: "/pdf-thumbs/check-forged-steel.jpg", pages: 18 },
+        ],
         image: "/products/check-valve.jpg",
         name: "Check Valve",
         category: "valves",
@@ -363,6 +430,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "schuf-control-valve",
+        docs: [
+          { label: "SchuF Control Valve Brochure", pdf: "/pdfs/schuf-control-valve.pdf", thumb: "/pdf-thumbs/schuf-control-valve.jpg", pages: 24 },
+        ],
         image: "/products/schuf-control-valve.jpg",
         name: "Severe Service Control Valve",
         category: "valves",
@@ -374,6 +444,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "schuf-blowdown-valve",
+        docs: [
+          { label: "Blowdown Valve", pdf: "/pdfs/schuf-blowdown-valve.pdf", thumb: "/pdf-thumbs/schuf-blowdown-valve.jpg", pages: 14 },
+        ],
         image: "/products/schuf-control-valve.jpg",
         name: "Blowdown / Depressurising Valve",
         category: "valves",
@@ -385,6 +458,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "arc-valve",
+        docs: [
+          { label: "Automatic Recirculation Valve", pdf: "/pdfs/arc-valve.pdf", thumb: "/pdf-thumbs/arc-valve.jpg", pages: 12 },
+        ],
         image: "/products/arc-valve.jpg",
         name: "Automatic Recirculation Valve",
         category: "valves",
@@ -394,7 +470,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "diaphragm-valve",
-        image: "/products/diaphragm-valve.jpg",
+        docs: [
+          { label: "Diaphragm Valves Catalogue", pdf: "/pdfs/diaphragm-valve.pdf", thumb: "/pdf-thumbs/diaphragm-valve.jpg", pages: 28 },
+        ],
         name: "Diaphragm Valve",
         category: "valves",
         subcategory: "Diaphragm Valves",
@@ -403,6 +481,13 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "gate-valve",
+        docs: [
+          { label: "API 6A Gate Valve", pdf: "/pdfs/gate-api-6a.pdf", thumb: "/pdf-thumbs/gate-api-6a.jpg", pages: 3 },
+          { label: "Bolted Bonnet Wedge Gate Valve", pdf: "/pdfs/gate-bolted-bonnet-wedge.pdf", thumb: "/pdf-thumbs/gate-bolted-bonnet-wedge.jpg", pages: 9 },
+          { label: "Conduit Bolted Bonnet Slab Gate Valve", pdf: "/pdfs/gate-conduit-slab.pdf", thumb: "/pdf-thumbs/gate-conduit-slab.jpg", pages: 20 },
+          { label: "Parallel Slide Bolted Bonnet Gate Valve", pdf: "/pdfs/gate-parallel-slide.pdf", thumb: "/pdf-thumbs/gate-parallel-slide.jpg", pages: 2 },
+          { label: "Wedge Type Pressure Seal Bonnet Gate Valve", pdf: "/pdfs/gate-pressure-seal.pdf", thumb: "/pdf-thumbs/gate-pressure-seal.jpg", pages: 10 },
+        ],
         image: "/products/gate-valve.jpg",
         name: "Gate Valve",
         category: "valves",
@@ -412,6 +497,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "globe-valve-602",
+        docs: [
+          { label: "Forged Globe Valve (API 602)", pdf: "/pdfs/globe-valve-602.pdf", thumb: "/pdf-thumbs/globe-valve-602.jpg", pages: 9 },
+        ],
         image: "/products/globe-valve-602.jpg",
         name: "Forged Globe Valve (API 602)",
         category: "valves",
@@ -421,6 +509,12 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "plastic-lined-valve",
+        docs: [
+          { label: "Lined Ball Valve", pdf: "/pdfs/plastic-lined-ball.pdf", thumb: "/pdf-thumbs/plastic-lined-ball.jpg", pages: 4 },
+          { label: "Lined Plug Valve (Anti-Corrosion)", pdf: "/pdfs/plastic-lined-plug.pdf", thumb: "/pdf-thumbs/plastic-lined-plug.jpg", pages: 5 },
+          { label: "Lined Check Valve", pdf: "/pdfs/plastic-lined-check.pdf", thumb: "/pdf-thumbs/plastic-lined-check.jpg", pages: 4 },
+        ],
+        image: "/products/plastic-lined-valve.jpg",
         name: "Plastic Lined Valve",
         category: "valves",
         subcategory: "Plastic Lined Valves",
@@ -429,6 +523,12 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "plug-valve",
+        docs: [
+          { label: "Regular Pattern Plug Valve", pdf: "/pdfs/plug-regular-pattern.pdf", thumb: "/pdf-thumbs/plug-regular-pattern.jpg", pages: 33 },
+          { label: "Short Pattern Plug Valve", pdf: "/pdfs/plug-short-pattern.pdf", thumb: "/pdf-thumbs/plug-short-pattern.jpg", pages: 4 },
+          { label: "Venturi Pattern Plug Valve", pdf: "/pdfs/plug-venturi-pattern.pdf", thumb: "/pdf-thumbs/plug-venturi-pattern.jpg", pages: 13 },
+          { label: "Jacketed Plug Valve", pdf: "/pdfs/plug-jacketed.pdf", thumb: "/pdf-thumbs/plug-jacketed.jpg", pages: 28 },
+        ],
         image: "/products/plug-valve.jpg",
         name: "Plug Valve",
         category: "valves",
@@ -438,6 +538,16 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "safety-valve",
+        docs: [
+          { label: "Safety Relief Valve", pdf: "/pdfs/safety-relief.pdf", thumb: "/pdf-thumbs/safety-relief.jpg", pages: 2 },
+          { label: "Conventional Safety Valve", pdf: "/pdfs/safety-conventional.pdf", thumb: "/pdf-thumbs/safety-conventional.jpg", pages: 3 },
+          { label: "Balanced Safety Valve", pdf: "/pdfs/safety-balanced.pdf", thumb: "/pdf-thumbs/safety-balanced.jpg", pages: 3 },
+          { label: "Spring-Loaded Safety Valve", pdf: "/pdfs/safety-spring-loaded.pdf", thumb: "/pdf-thumbs/safety-spring-loaded.jpg", pages: 9 },
+          { label: "Full Lift Safety Valve", pdf: "/pdfs/safety-full-lift.pdf", thumb: "/pdf-thumbs/safety-full-lift.jpg", pages: 2 },
+          { label: "Low Lift Safety Relief Valve", pdf: "/pdfs/safety-low-lift.pdf", thumb: "/pdf-thumbs/safety-low-lift.jpg", pages: 1 },
+          { label: "Pressure/Vacuum Relief Valve", pdf: "/pdfs/safety-vacuum.pdf", thumb: "/pdf-thumbs/safety-vacuum.jpg", pages: 6 },
+          { label: "Pilot-Operated Safety Valve", pdf: "/pdfs/safety-pilot-operated.pdf", thumb: "/pdf-thumbs/safety-pilot-operated.jpg", pages: 3 },
+        ],
         image: "/products/safety-valve.jpg",
         name: "Safety Relief Valve",
         category: "valves",
@@ -447,6 +557,24 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "special-valve",
+        docs: [
+          { label: "Angle Choke Valve", pdf: "/pdfs/special-angle-choke.pdf", thumb: "/pdf-thumbs/special-angle-choke.jpg", pages: 28 },
+          { label: "Inline & Angle Control Valve", pdf: "/pdfs/special-angle-control.pdf", thumb: "/pdf-thumbs/special-angle-control.jpg", pages: 16 },
+          { label: "Bottom Outlet Valve", pdf: "/pdfs/special-bottom-outlet.pdf", thumb: "/pdf-thumbs/special-bottom-outlet.jpg", pages: 44 },
+          { label: "Changeover Valve", pdf: "/pdfs/special-changeover.pdf", thumb: "/pdf-thumbs/special-changeover.jpg", pages: 6 },
+          { label: "Cryogenic Globe Valve", pdf: "/pdfs/special-cryogenic-globe.pdf", thumb: "/pdf-thumbs/special-cryogenic-globe.jpg", pages: 4 },
+          { label: "Delayed Coker Valve", pdf: "/pdfs/special-delayed-coker.pdf", thumb: "/pdf-thumbs/special-delayed-coker.jpg", pages: 13 },
+          { label: "Diverter Valve", pdf: "/pdfs/special-diverter.pdf", thumb: "/pdf-thumbs/special-diverter.jpg", pages: 12 },
+          { label: "In-Tank Valve", pdf: "/pdfs/special-in-tank.pdf", thumb: "/pdf-thumbs/special-in-tank.jpg", pages: 6 },
+          { label: "Lift Plug Valve", pdf: "/pdfs/special-lift-plug.pdf", thumb: "/pdf-thumbs/special-lift-plug.jpg", pages: 16 },
+          { label: "Line Blind Valve", pdf: "/pdfs/special-line-blind.pdf", thumb: "/pdf-thumbs/special-line-blind.jpg", pages: 16 },
+          { label: "Maniflow Selector Valve", pdf: "/pdfs/special-maniflow-selector.pdf", thumb: "/pdf-thumbs/special-maniflow-selector.jpg", pages: 12 },
+          { label: "Sampling Valve", pdf: "/pdfs/special-sampling.pdf", thumb: "/pdf-thumbs/special-sampling.jpg", pages: 12 },
+          { label: "Special Ball Valve", pdf: "/pdfs/special-ball.pdf", thumb: "/pdf-thumbs/special-ball.jpg", pages: 20 },
+          { label: "Special Gate Valve", pdf: "/pdfs/special-gate.pdf", thumb: "/pdf-thumbs/special-gate.jpg", pages: 12 },
+          { label: "Special Globe Valve", pdf: "/pdfs/special-globe.pdf", thumb: "/pdf-thumbs/special-globe.jpg", pages: 32 },
+          { label: "Spray-Rinse & Steam Handling Valve", pdf: "/pdfs/special-spray-rinse.pdf", thumb: "/pdf-thumbs/special-spray-rinse.jpg", pages: 8 },
+        ],
         image: "/products/special-valve.jpg",
         name: "Special / Engineered Valve",
         category: "valves",
@@ -465,6 +593,9 @@ export const productCategories: ProductCategory[] = [
     products: [
       {
         id: "verderair-aodd",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/verderair-aodd.pdf", thumb: "/pdf-thumbs/verderair-aodd.jpg", pages: 16 },
+        ],
         image: "/products/verderair-aodd.jpg",
         name: "Verderair Air-Operated Diaphragm Pump",
         category: "pumps",
@@ -476,6 +607,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "verderair-hc-pure",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/verderair-hc-pure.pdf", thumb: "/pdf-thumbs/verderair-hc-pure.jpg", pages: 2 },
+        ],
         image: "/products/verderair-hc-pure.jpg",
         name: "Verderair HC Pure Hygienic Diaphragm Pump",
         category: "pumps",
@@ -487,6 +621,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "verderflex-peristaltic",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/verderflex-peristaltic.pdf", thumb: "/pdf-thumbs/verderflex-peristaltic.jpg", pages: 16 },
+        ],
         image: "/products/verderflex-peristaltic.jpg",
         name: "Verderflex Peristaltic Hose Pump",
         category: "pumps",
@@ -498,6 +635,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "techniflo-mag-drive",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/techniflo-mag-drive.pdf", thumb: "/pdf-thumbs/techniflo-mag-drive.jpg", pages: 20 },
+        ],
         image: "/products/techniflo-mag-drive.jpg",
         name: "Chemical Magnetic Drive Pump",
         category: "pumps",
@@ -509,6 +649,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "techniflo-drum-pump",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/techniflo-drum-pump.pdf", thumb: "/pdf-thumbs/techniflo-drum-pump.jpg", pages: 16 },
+        ],
         image: "/products/techniflo-drum-pump.jpg",
         name: "Drum / Barrel Pump",
         category: "pumps",
@@ -520,6 +663,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "slurrypro-slurry-pump",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/slurrypro-slurry-pump.pdf", thumb: "/pdf-thumbs/slurrypro-slurry-pump.jpg", pages: 16 },
+        ],
         image: "/products/slurrypro-slurry-pump.jpg",
         name: "Heavy-Duty Slurry Pump",
         category: "pumps",
@@ -540,6 +686,9 @@ export const productCategories: ProductCategory[] = [
     products: [
       {
         id: "kw-tp-series",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/knox-western.pdf", thumb: "/pdf-thumbs/knox-western.jpg", pages: 14 },
+        ],
         image: "/products/kw-tp-series.jpg",
         name: "Knox Western TP Series Reciprocating Gas Compressor",
         category: "compressors",
@@ -551,6 +700,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "kw-eagle-series",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/knox-western.pdf", thumb: "/pdf-thumbs/knox-western.jpg", pages: 14 },
+        ],
         image: "/products/kw-eagle-series.jpg",
         name: "Knox Western Eagle Series Reciprocating Gas Compressor",
         category: "compressors",
@@ -562,7 +714,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "ventos-diaphragm",
-        image: "/products/ventos-diaphragm.jpg",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/ventos-diaphragm.pdf", thumb: "/pdf-thumbs/ventos-diaphragm.jpg", pages: 10 },
+        ],
         name: "Ventos Diaphragm Compressor",
         category: "compressors",
         subcategory: "Diaphragm Compressors",
@@ -573,7 +727,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "ventos-h2-booster",
-        image: "/products/ventos-diaphragm.jpg",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/ventos-diaphragm.pdf", thumb: "/pdf-thumbs/ventos-diaphragm.jpg", pages: 10 },
+        ],
         name: "Ventos Oil-Free Hydraulic Booster (O₂ & H₂)",
         category: "compressors",
         subcategory: "Diaphragm Compressors",
@@ -584,6 +740,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "didwania-cng",
+        docs: [
+          { label: "Company Introduction", pdf: "/pdfs/didwania-group-intro.pdf", thumb: "/pdf-thumbs/didwania-group-intro.jpg", pages: 32 },
+        ],
         image: "/products/didwania-cng.jpg",
         name: "CNG Compressor & Hydraulic Booster",
         category: "compressors",
@@ -595,6 +754,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "cryopump-cryogenic",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/cryopump-cryogenic.pdf", thumb: "/pdf-thumbs/cryopump-cryogenic.jpg", pages: 12 },
+        ],
         image: "/products/cryopump-cryogenic.jpg",
         name: "Cryopump Cryogenic Pump",
         category: "compressors",
@@ -606,6 +768,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "tscryo-lng-pump",
+        docs: [
+          { label: "Company Introduction", pdf: "/pdfs/didwania-group-intro.pdf", thumb: "/pdf-thumbs/didwania-group-intro.jpg", pages: 32 },
+        ],
         image: "/products/tscryo-lng-pump.jpg",
         name: "TS Cryo Submerged LNG Pump & Transfer Systems",
         category: "compressors",
@@ -626,6 +791,9 @@ export const productCategories: ProductCategory[] = [
     products: [
       {
         id: "eureka-glass-rotameter",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/eureka-glass-rotameter.pdf", thumb: "/pdf-thumbs/eureka-glass-rotameter.jpg", pages: 4 },
+        ],
         image: "/products/eureka-glass-rotameter.jpg",
         name: "Glass Tube Rotameter & Loflometer",
         category: "instrumentation",
@@ -637,6 +805,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "eureka-metal-rotameter",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/eureka-metal-rotameter.pdf", thumb: "/pdf-thumbs/eureka-metal-rotameter.jpg", pages: 6 },
+        ],
         image: "/products/eureka-metal-rotameter.jpg",
         name: "Metal Tube Rotameter",
         category: "instrumentation",
@@ -648,6 +819,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "eureka-bypass-rotameter",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/eureka-bypass-rotameter.pdf", thumb: "/pdf-thumbs/eureka-bypass-rotameter.jpg", pages: 6 },
+        ],
         image: "/products/eureka-bypass-rotameter.jpg",
         name: "Bypass Rotameter",
         category: "instrumentation",
@@ -659,6 +833,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "eureka-emf",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/eureka-emf.pdf", thumb: "/pdf-thumbs/eureka-emf.jpg", pages: 12 },
+        ],
         image: "/products/eureka-emf.jpg",
         name: "Electromagnetic Flowmeter (EMF)",
         category: "instrumentation",
@@ -670,7 +847,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "eureka-eusonic",
-        image: "/products/eureka-eusonic.jpg",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/eureka-eusonic.pdf", thumb: "/pdf-thumbs/eureka-eusonic.jpg", pages: 2 },
+        ],
         name: "EUSONIC Ultrasonic Flowmeter",
         category: "instrumentation",
         subcategory: "Flow",
@@ -681,6 +860,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "eureka-vortex",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/eureka-vortex.pdf", thumb: "/pdf-thumbs/eureka-vortex.jpg", pages: 3 },
+        ],
         image: "/products/eureka-vortex.jpg",
         name: "Vortex Flowmeter",
         category: "instrumentation",
@@ -692,7 +874,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "eureka-eubar",
-        image: "/products/eureka-eubar.jpg",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/eureka-eubar.pdf", thumb: "/pdf-thumbs/eureka-eubar.jpg", pages: 2 },
+        ],
         name: "EUBAR Averaging Pitot Tube",
         category: "instrumentation",
         subcategory: "Flow",
@@ -703,6 +887,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "eureka-eurekone",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/eureka-eurekone.pdf", thumb: "/pdf-thumbs/eureka-eurekone.jpg", pages: 6 },
+        ],
         image: "/products/eureka-eurekone.jpg",
         name: "EUREKONE Cone Flowmeter",
         category: "instrumentation",
@@ -714,6 +901,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "eureka-aerofoil",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/eureka-aerofoil.pdf", thumb: "/pdf-thumbs/eureka-aerofoil.jpg", pages: 2 },
+        ],
         image: "/products/eureka-aerofoil.jpg",
         name: "Aerofoil Flow Element",
         category: "instrumentation",
@@ -725,7 +915,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "eureka-orifice-assembly",
-        image: "/products/eureka-orifice-assembly.jpg",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/eureka-orifice-assembly.pdf", thumb: "/pdf-thumbs/eureka-orifice-assembly.jpg", pages: 6 },
+        ],
         name: "Orifice Flange Assembly",
         category: "instrumentation",
         subcategory: "Flow",
@@ -736,7 +928,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "eureka-venturi",
-        image: "/products/eureka-venturi.jpg",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/eureka-venturi.pdf", thumb: "/pdf-thumbs/eureka-venturi.jpg", pages: 2 },
+        ],
         name: "Venturi Tube",
         category: "instrumentation",
         subcategory: "Flow",
@@ -747,7 +941,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "eureka-flow-nozzle",
-        image: "/products/eureka-flow-nozzle.jpg",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/eureka-flow-nozzle.pdf", thumb: "/pdf-thumbs/eureka-flow-nozzle.jpg", pages: 2 },
+        ],
         name: "Flow Nozzle",
         category: "instrumentation",
         subcategory: "Flow",
@@ -758,7 +954,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "eureka-sight-flow",
-        image: "/products/eureka-sight-flow.jpg",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/eureka-sight-flow.pdf", thumb: "/pdf-thumbs/eureka-sight-flow.jpg", pages: 2 },
+        ],
         name: "Sight Flow Indicator",
         category: "instrumentation",
         subcategory: "Flow",
@@ -769,8 +967,11 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "kobold-tmu",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/kobold-tmu.pdf", thumb: "/pdf-thumbs/kobold-tmu.jpg", pages: 7 },
+        ],
         image: "/products/kobold-tmu.jpg",
-        name: "KOBOLD TMU Thermal Mass Flowmeter",
+        name: "KOBOLD TMU Coriolis Mass Flowmeter",
         category: "instrumentation",
         subcategory: "Flow",
         description:
@@ -780,6 +981,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "weksler-pressure-gauge",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/weksler-pressure-gauge.pdf", thumb: "/pdf-thumbs/weksler-pressure-gauge.jpg", pages: 48 },
+        ],
         image: "/products/weksler-pressure-gauge.jpg",
         name: "Weksler Bourdon Tube Pressure Gauge",
         category: "instrumentation",
@@ -791,6 +995,10 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "kobold-pad-pas",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/kobold-pad-pas.pdf", thumb: "/pdf-thumbs/kobold-pad-pas.jpg", pages: 67 },
+          { label: "Model PAS — Operating Manual", pdf: "/pdfs/kobold-pas.pdf", thumb: "/pdf-thumbs/kobold-pas.jpg", pages: 52 },
+        ],
         image: "/products/kobold-pad-pas.jpg",
         name: "KOBOLD Model PAD / PAS Smart Pressure Transmitter",
         category: "instrumentation",
@@ -802,6 +1010,10 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "kobold-twl",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/kobold-twl.pdf", thumb: "/pdf-thumbs/kobold-twl.jpg", pages: 28 },
+          { label: "Model TWL — Ex ia Operating Manual", pdf: "/pdfs/kobold-twl-exia.pdf", thumb: "/pdf-thumbs/kobold-twl-exia.jpg", pages: 25 },
+        ],
         name: "KOBOLD Model TWL Temperature Sensor (Pt100)",
         category: "instrumentation",
         subcategory: "Temperature",
@@ -812,6 +1024,10 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "tecfluid-series-lt",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/tecfluid-series-lt.pdf", thumb: "/pdf-thumbs/tecfluid-series-lt.jpg", pages: 8 },
+          { label: "Bypass Level Indicator NBK — ATEX Operating Manual", pdf: "/pdfs/tecfluid-atex.pdf", thumb: "/pdf-thumbs/tecfluid-atex.jpg", pages: 32 },
+        ],
         image: "/products/tecfluid-series-lt.jpg",
         name: "Tecfluid Series LT Magnetic Level Gauge",
         category: "instrumentation",
@@ -823,6 +1039,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "heinrichs-dwf",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/heinrichs-dwf.pdf", thumb: "/pdf-thumbs/heinrichs-dwf.jpg", pages: 30 },
+        ],
         image: "/products/heinrichs-dwf.jpg",
         name: "Heinrichs Model DWF Density Meter",
         category: "instrumentation",
@@ -834,6 +1053,10 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "aptek-instrument-manifolds",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/aptek-instrument-manifolds.pdf", thumb: "/pdf-thumbs/aptek-instrument-manifolds.jpg", pages: 124 },
+        ],
+        image: "/products/aptek-instrument-manifolds.jpg",
         name: "Instrument Valves, Manifolds & Fittings",
         category: "instrumentation",
         subcategory: "Valves & Fittings",
@@ -853,6 +1076,9 @@ export const productCategories: ProductCategory[] = [
     products: [
       {
         id: "lifeco-welded-pipes",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/lifeco-welded-pipes.pdf", thumb: "/pdf-thumbs/lifeco-welded-pipes.jpg", pages: 8 },
+        ],
         image: "/products/lifeco-welded-pipes.jpg",
         name: "Welded Steel Pipes",
         category: "pipes",
@@ -863,6 +1089,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "lifeco-steel-plates",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/lifeco-steel-plates.pdf", thumb: "/pdf-thumbs/lifeco-steel-plates.jpg", pages: 4 },
+        ],
         image: "/products/lifeco-steel-plates.jpg",
         name: "Steel Plates",
         category: "pipes",
@@ -873,6 +1102,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "viraj-flanges",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/viraj-flanges.pdf", thumb: "/pdf-thumbs/viraj-flanges.jpg", pages: 7 },
+        ],
         image: "/products/viraj-flanges.jpg",
         name: "Stainless Steel Flanges",
         category: "pipes",
@@ -884,6 +1116,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "tsg-spiral-gaskets",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/tsg-spiral-gaskets.pdf", thumb: "/pdf-thumbs/tsg-spiral-gaskets.jpg", pages: 16 },
+        ],
         image: "/products/tsg-spiral-gaskets.jpg",
         name: "Spiral Wound Gaskets",
         category: "pipes",
@@ -894,6 +1129,10 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "ctb-fasteners",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/ctb-fasteners.pdf", thumb: "/pdf-thumbs/ctb-fasteners.jpg", pages: 4 },
+          { label: "Subsea Products", pdf: "/pdfs/ctb-subsea.pdf", thumb: "/pdf-thumbs/ctb-subsea.jpg", pages: 4 },
+        ],
         image: "/products/ctb-fasteners.jpg",
         name: "High-Integrity Fasteners (PowerGen & Subsea)",
         category: "pipes",
@@ -914,6 +1153,9 @@ export const productCategories: ProductCategory[] = [
     products: [
       {
         id: "gtis-tray-technology",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/gtis-tray-technology.pdf", thumb: "/pdf-thumbs/gtis-tray-technology.jpg", pages: 15 },
+        ],
         image: "/products/gtis-tray-technology.jpg",
         name: "Distillation Trays",
         category: "filtration",
@@ -925,6 +1167,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "gtis-packed-tower",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/gtis-packed-tower.pdf", thumb: "/pdf-thumbs/gtis-packed-tower.jpg", pages: 15 },
+        ],
         image: "/products/gtis-packed-tower.jpg",
         name: "Random & Structured Packing",
         category: "filtration",
@@ -936,6 +1181,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "gtis-tower-internals",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/gtis-tower-internals.pdf", thumb: "/pdf-thumbs/gtis-tower-internals.jpg", pages: 32 },
+        ],
         image: "/products/gtis-tower-internals.jpg",
         name: "Tower Internals",
         category: "filtration",
@@ -947,6 +1195,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "gtis-separation",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/gtis-separation.pdf", thumb: "/pdf-thumbs/gtis-separation.jpg", pages: 17 },
+        ],
         image: "/products/gtis-separation.jpg",
         name: "Separation Technology",
         category: "filtration",
@@ -958,7 +1209,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "sparks-filter-elements",
-        image: "/products/sparks-filter-elements.jpg",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/sparks-filter-elements.pdf", thumb: "/pdf-thumbs/sparks-filter-elements.jpg", pages: 11 },
+        ],
         name: "Process Filter Elements",
         category: "filtration",
         subcategory: "Filter Elements",
@@ -969,6 +1222,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "inlet-diffuser-basket",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/inlet-diffuser-basket.pdf", thumb: "/pdf-thumbs/inlet-diffuser-basket.jpg", pages: 4 },
+        ],
         image: "/products/inlet-diffuser-basket.jpg",
         name: "Inlet Diffuser Basket",
         category: "filtration",
@@ -980,6 +1236,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "downflow-reactor-internals",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/downflow-internals.pdf", thumb: "/pdf-thumbs/downflow-internals.jpg", pages: 8 },
+        ],
         image: "/products/downflow-reactor-internals.jpg",
         name: "Down-Flow Reactor Internals",
         category: "filtration",
@@ -991,6 +1250,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "scale-traps",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/downflow-internals.pdf", thumb: "/pdf-thumbs/downflow-internals.jpg", pages: 8 },
+        ],
         image: "/products/scale-traps.jpg",
         name: "Scale Trap Baskets",
         category: "filtration",
@@ -1002,6 +1264,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "support-grids",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/downflow-internals.pdf", thumb: "/pdf-thumbs/downflow-internals.jpg", pages: 8 },
+        ],
         image: "/products/support-grids.jpg",
         name: "Support Grids",
         category: "filtration",
@@ -1013,6 +1278,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "shaped-support-grid",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/shaped-support-grid.pdf", thumb: "/pdf-thumbs/shaped-support-grid.jpg", pages: 5 },
+        ],
         image: "/products/shaped-support-grid.jpg",
         name: "Shaped Support Grid",
         category: "filtration",
@@ -1024,6 +1292,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "centerpipes",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/radial-internals.pdf", thumb: "/pdf-thumbs/radial-internals.jpg", pages: 12 },
+        ],
         image: "/products/centerpipes.jpg",
         name: "Centerpipes",
         category: "filtration",
@@ -1035,6 +1306,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "outer-screens",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/radial-internals.pdf", thumb: "/pdf-thumbs/radial-internals.jpg", pages: 12 },
+        ],
         image: "/products/outer-screens.jpg",
         name: "Outer Screens",
         category: "filtration",
@@ -1046,6 +1320,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "scallops",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/scallops.pdf", thumb: "/pdf-thumbs/scallops.jpg", pages: 4 },
+        ],
         image: "/products/scallops.jpg",
         name: "Scallops",
         category: "filtration",
@@ -1057,6 +1334,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "radial-spider-lateral",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/radial-spider-lateral.pdf", thumb: "/pdf-thumbs/radial-spider-lateral.jpg", pages: 2 },
+        ],
         image: "/products/radial-spider-lateral.jpg",
         name: "Radial Spider Lateral System",
         category: "filtration",
@@ -1068,6 +1348,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "header-laterals",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/header-laterals.pdf", thumb: "/pdf-thumbs/header-laterals.jpg", pages: 2 },
+        ],
         image: "/products/header-laterals.jpg",
         name: "Header–Lateral Systems",
         category: "filtration",
@@ -1079,6 +1362,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "outlet-collectors",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/outlet-collectors.pdf", thumb: "/pdf-thumbs/outlet-collectors.jpg", pages: 1 },
+        ],
         image: "/products/outlet-collectors.jpg",
         name: "Outlet Collectors",
         category: "filtration",
@@ -1090,6 +1376,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "overlay-screens",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/overlay-screens.pdf", thumb: "/pdf-thumbs/overlay-screens.jpg", pages: 2 },
+        ],
         image: "/products/overlay-screens.jpg",
         name: "Overlay Screens",
         category: "filtration",
@@ -1101,6 +1390,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "floating-holddown-screen",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/floating-holddown-screen.pdf", thumb: "/pdf-thumbs/floating-holddown-screen.jpg", pages: 2 },
+        ],
         image: "/products/floating-holddown-screen.jpg",
         name: "StaySafe Floating Hold-Down Screen",
         category: "filtration",
@@ -1112,6 +1404,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "manway-holddown-screen",
+        docs: [
+          { label: "Technical Datasheet", pdf: "/pdfs/manway-holddown-screen.pdf", thumb: "/pdf-thumbs/manway-holddown-screen.jpg", pages: 2 },
+        ],
         image: "/products/manway-holddown-screen.jpg",
         name: "StaySafe Manway Hold-Down Screen",
         category: "filtration",
@@ -1132,7 +1427,9 @@ export const productCategories: ProductCategory[] = [
     products: [
       {
         id: "errevi-oil-hose",
-        image: "/products/errevi-oil-hose.jpg",
+        docs: [
+          { label: "Company Profile", pdf: "/pdfs/errevi-profile.pdf", thumb: "/pdf-thumbs/errevi-profile.jpg", pages: 14 },
+        ],
         name: "Oil & Fuel Transfer Hose",
         category: "hoses",
         subcategory: "Industrial Hoses",
@@ -1143,6 +1440,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "errevi-chemical-hose",
+        docs: [
+          { label: "Company Profile", pdf: "/pdfs/errevi-profile.pdf", thumb: "/pdf-thumbs/errevi-profile.jpg", pages: 14 },
+        ],
         name: "Chemical & Composite Hose",
         category: "hoses",
         subcategory: "Industrial Hoses",
@@ -1153,6 +1453,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "errevi-steam-hose",
+        docs: [
+          { label: "Company Profile", pdf: "/pdfs/errevi-profile.pdf", thumb: "/pdf-thumbs/errevi-profile.jpg", pages: 14 },
+        ],
         name: "Steam & High-Temperature Hose",
         category: "hoses",
         subcategory: "Industrial Hoses",
@@ -1163,6 +1466,9 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "errevi-metallic-hose",
+        docs: [
+          { label: "Company Profile", pdf: "/pdfs/errevi-profile.pdf", thumb: "/pdf-thumbs/errevi-profile.jpg", pages: 14 },
+        ],
         image: "/products/errevi-metallic-hose.jpg",
         name: "Metallic Hose & Expansion Joint",
         category: "hoses",
@@ -1245,7 +1551,6 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "hydraulic-actuator",
-        image: "/products/hydraulic-actuator.jpg",
         name: "Hydraulic Actuator",
         category: "actuators",
         description:
@@ -1286,7 +1591,6 @@ export const productCategories: ProductCategory[] = [
       },
       {
         id: "fall-protection",
-        image: "/products/fall-protection.jpg",
         name: "Fall Protection",
         category: "safety",
         description:

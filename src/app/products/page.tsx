@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Header from "@/components/layout/Header";
 import { productCategories, company, type Product, type ProductCategory } from "@/lib/data";
-import { FiArrowUpRight, FiX, FiMail, FiChevronRight, FiMapPin, FiBox } from "react-icons/fi";
+import { FiArrowUpRight, FiX, FiMail, FiChevronRight, FiMapPin, FiBox, FiFileText, FiExternalLink, FiDownload } from "react-icons/fi";
 
 const B = "var(--font-barlow)";
 
@@ -72,7 +72,7 @@ function ProductModal({
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-xl bg-[#111] border border-white/8 shadow-2xl"
+        className="relative w-full max-w-xl max-h-[90vh] overflow-y-auto bg-[#111] border border-white/8 shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top bar */}
@@ -127,6 +127,64 @@ function ProductModal({
             </div>
           )}
           <p className="text-white/55 text-sm leading-relaxed">{product.description}</p>
+
+          {/* Datasheets */}
+          {product.docs && product.docs.length > 0 && (
+            <div className="mt-6 pt-6 border-t border-white/6">
+              <div className="flex items-center gap-2 mb-3">
+                <FiFileText size={12} className="text-[#F5A623]" />
+                <span className="text-[10px] uppercase tracking-widest text-white/30">
+                  {product.docs.length === 1
+                    ? "Technical Datasheet"
+                    : `Technical Datasheets (${product.docs.length})`}
+                </span>
+              </div>
+              <div className="border border-white/8 bg-[#0C0C0C] divide-y divide-white/6">
+                {product.docs.map((doc) => (
+                  <div key={doc.pdf} className="flex items-center gap-3 p-3">
+                    <div className="relative w-12 h-16 flex-shrink-0 border border-white/10 overflow-hidden bg-white">
+                      <Image
+                        src={doc.thumb}
+                        alt=""
+                        fill
+                        className="object-cover object-top"
+                        sizes="48px"
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-white/80 text-xs font-medium leading-snug">
+                        {doc.label}
+                      </p>
+                      <p className="text-white/30 text-[11px] mt-0.5">
+                        {doc.pages} page{doc.pages === 1 ? "" : "s"} · PDF
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-3 flex-shrink-0">
+                      <a
+                        href={doc.pdf}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="View PDF"
+                        className="inline-flex items-center gap-1.5 text-[#F5A623] text-[11px] uppercase tracking-wider font-medium hover:text-[#FFD57E] transition-colors"
+                      >
+                        <FiExternalLink size={12} />
+                        <span className="hidden sm:inline">View</span>
+                      </a>
+                      <a
+                        href={doc.pdf}
+                        download
+                        title="Download PDF"
+                        className="inline-flex items-center gap-1.5 text-white/45 text-[11px] uppercase tracking-wider hover:text-white transition-colors"
+                      >
+                        <FiDownload size={12} />
+                        <span className="hidden sm:inline">Save</span>
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Footer CTA */}
@@ -177,6 +235,20 @@ function ProductCard({
         <span className="absolute top-2.5 right-2.5 z-10 bg-[#F5A623] text-black p-1.5 opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all duration-300">
           <FiArrowUpRight size={13} />
         </span>
+        {/* datasheet indicator */}
+        {product.docs && product.docs.length > 0 && (
+          <span
+            className="absolute bottom-2.5 right-2.5 z-10 flex items-center gap-1 bg-black/70 backdrop-blur-sm text-[#FFD57E] px-1.5 py-1.5"
+            title={`${product.docs.length} datasheet${product.docs.length === 1 ? "" : "s"} (PDF) available`}
+          >
+            <FiFileText size={12} />
+            {product.docs.length > 1 && (
+              <span className="text-[9px] font-semibold leading-none tabular-nums">
+                {product.docs.length}
+              </span>
+            )}
+          </span>
+        )}
       </div>
 
       {/* Hover accent bar */}

@@ -172,7 +172,7 @@ export default function AboutPage() {
             <div className="border border-white/6 overflow-hidden h-64">
               <iframe
                 title="Fortis West Location"
-                src="https://maps.google.com/maps?q=Atyrau,Kazakhstan&output=embed&z=11"
+                src="https://maps.google.com/maps?q=Aiteke+bi+43A,Atyrau,Kazakhstan&output=embed&z=15"
                 className="w-full h-full grayscale opacity-70"
                 loading="lazy"
               />

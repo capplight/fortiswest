@@ -1,6 +1,6 @@
 "use server";
 
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
 export type ContactFormState = {
   status: "idle" | "success" | "error";
@@ -26,18 +26,10 @@ export async function sendContactEmail(
   }
 
   try {
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT ?? 587),
-      secure: process.env.SMTP_SECURE === "true",
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
-    await transporter.sendMail({
-      from: `"Fortis West Website" <${process.env.SMTP_USER}>`,
+    const { error } = await resend.emails.send({
+      from: process.env.RESEND_FROM ?? "Fortis West Website <onboarding@resend.dev>",
       to: process.env.CONTACT_TO ?? "info@fortiswest.kz",
       replyTo: email,
       subject: `[Website] ${subject} — from ${name}`,
@@ -59,6 +51,11 @@ export async function sendContactEmail(
         </div>
       `,
     });
+
+    if (error) {
+      console.error("Contact form email error:", error);
+      return { status: "error", message: "Failed to send your message. Please email us directly at info@fortiswest.kz." };
+    }
 
     return { status: "success", message: "Your message has been sent. We will be in touch shortly." };
   } catch (err) {
